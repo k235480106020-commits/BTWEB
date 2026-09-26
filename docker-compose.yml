@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/html:/usr/share/nginx/html
+    restart: unless-stopped
+    networks:
+      - server_network
+
+  nodered:
+    image: nodered/node-red:latest
+    container_name: nodered
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered-data:/data
+    restart: unless-stopped
+    networks:
+      - server_network
+
+  mariadb:
+    image: mariadb:10.11
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: phanhai
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: phanhai
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - server_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: phanhai
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+    networks:
+      - server_network
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    command: tunnel --no-autoupdate run --token eyJhIjoiN2FlOTBlNDdjYzQwZTdmZGNhMzE5OTUwZGRhZTk2MGYiLCJ0IjoiMzc1OTVhYjItNDBlOC00ODc2LTg5ZDEtYzc2OGUwOWNjYWNkIiwicyI6Ik9HWmxNemM1TlRndE1XSmhOaTAwTnpkaExXRmpPVFV0WlRGbU5EQXlOV1ZqTVdNMSJ9
+    restart: unless-stopped
+    networks:
+      - server_network
+
+volumes:
+  nodered-data:
+  mariadb-data:
+
+networks:
+  server_network:
+    driver: bridge
