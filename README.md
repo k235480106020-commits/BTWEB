@@ -58,18 +58,22 @@ Cấu hình nginx
 
 Khởi chạy 2 trang web thử nghiệm chạy trên 2 domain phanhaiweb1.hfanweb.id.vn và phanhaiweb2.hfanweb.id.vn
 
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/de93a2e1-3dfd-4012-94d9-2edfa32e739b" />
+
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/68488d1e-ef62-4986-9fa0-3546f6d0af7d" />
 
 
 Bài tập 2:
 
- Sử dụng nodered: dùng node http_in + http_response => tạo api đơn giản
-
+Sử dụng nodered: dùng node http_in + http_response => tạo api đơn giản
 
 Sử dụng http_in với phương thức get để lấy dữ liệu 
 
 <img width="1917" height="1072" alt="image" src="https://github.com/user-attachments/assets/e73f93ef-a458-45cd-99fc-1377f88f04e6" />
 
 Cấu hình nginx để web dùng js gọi đc API trên nodered, thuật toán cho api
+
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/0c001142-7300-4a8d-8036-17bf07da57e2" />
 
 Dùng function trả về dữ liệu api
 
@@ -78,3 +82,13 @@ Dùng function trả về dữ liệu api
 Kết nối tạo API và deloy 
 
 <img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/fcf127c0-1dd7-40bb-9927-17efcfb6d938" />
+
+Code js nhúng vào html để gọi API
+
+<img width="1915" height="1078" alt="image" src="https://github.com/user-attachments/assets/9de82139-2082-4f01-a71e-00f2fe3bbcd7" />
+
+Gọi API
+
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/9c144bef-e70f-40e4-8c3b-0de2f0f113c3" />
+
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/59016d5b-9a50-4789-a36b-b810c8c112d9" />
